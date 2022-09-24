@@ -14,15 +14,24 @@ data class Result(
     val stories: Stories,
     val thumbnail: Thumbnail,
     val urls: List<Url>
-){
+) {
     fun toCharacter(): CharacterModel {
         return CharacterModel(
-            id=id,
-            name=name,
-            description=description,
+            id = id,
+            name = name,
+            description = description,
             thumbnail = thumbnail.path,
-            thumbnailExt=thumbnail.extension,
+            thumbnailExt = thumbnail.extension,
             comics = comics.items.map {
+                it.name
+            },
+            series = series.items.map {
+                it.name
+            },
+            events = events.items.map {
+                it.name
+            },
+            stories = stories.items.map {
                 it.name
             }
         )
